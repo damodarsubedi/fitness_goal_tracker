@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gym_goal_tracker/core/constants/colors.dart';
 import 'package:gym_goal_tracker/features/dashboard/widgets/completion_chart.dart';
 import 'package:gym_goal_tracker/features/dashboard/widgets/goal_summary_card.dart';
 import 'package:gym_goal_tracker/features/dashboard/widgets/dashboard_header.dart';
-import 'package:gym_goal_tracker/shared/themes/app_theme.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -12,7 +12,7 @@ class DashboardScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: AppTheme.bluishWhite,
+        backgroundColor: AppColors.bluishWhite,
 
         child: Icon(Icons.add),
       ),
