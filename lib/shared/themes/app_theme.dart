@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
+  static const Color primaryBlue = Color(0xFF1A73E8);
+  static const Color secondaryBlue = Color(0xFF03A9F4);
+  static const Color darkBackground = Color(0xFF0D1119);
+  static const Color surfaceDark = Color(0xFF181E27);
+  static const Color softWhite = Color(0xFFF1F1F1);
+  static const Color bluishWhite = Color(0xFFDDEBFF);
+
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: const Color(0xFF0D1119), // Even darker bluish background
-    primaryColor: const Color(0xFF1A73E8), // Main theme color (blue)
+    scaffoldBackgroundColor: darkBackground,
+    primaryColor: primaryBlue,
     fontFamily: 'Montserrat',
     textTheme: const TextTheme(
       titleMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -17,17 +24,17 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xFF1A73E8), // Button color matches the primary color
+        backgroundColor: primaryBlue,
         foregroundColor: Colors.white,
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     ),
-    colorScheme: ColorScheme.dark(
-      primary: const Color(0xFF1A73E8), // Main theme color (blue)
-      secondary: const Color(0xFF03A9F4), // Accent color (lighter blue)
-      surface: const Color(0xFF181E27), // Darker bluish surface color
-      onSurface: Colors.white, // Text color on surfaces (light text on dark surfaces)
+    colorScheme: const ColorScheme.dark(
+      primary: primaryBlue,
+      secondary: secondaryBlue,
+      surface: surfaceDark,
+      onSurface: Colors.white,
     ),
   );
 }

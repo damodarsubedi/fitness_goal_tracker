@@ -34,7 +34,7 @@ class DashboardHeader extends StatelessWidget {
                 'Damodar',
                 style: Theme.of(
                   context,
-                ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+                ).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ],
           ),
