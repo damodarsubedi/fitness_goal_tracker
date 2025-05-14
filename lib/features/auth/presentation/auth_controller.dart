@@ -16,6 +16,7 @@ class AuthController extends StateNotifier<AuthState> {
       state = state.copyWith(user: user, isLoading: false);
     });
   }
+  Stream<dynamic> get authChanges => _repo.authChanges();
 
   Future<void> login(String email, String password) async {
     state = state.copyWith(isLoading: true, error: null);

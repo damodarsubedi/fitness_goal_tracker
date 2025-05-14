@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'auth_controller.dart';
 import 'package:gym_goal_tracker/shared/widgets/custom_button.dart';
 
@@ -111,14 +112,19 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                       else
                         CustomButton(
                           label: "Sign Up",
-                          onPressed: () {
+                          onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              ref
+                              await ref
                                   .read(authControllerProvider.notifier)
                                   .signup(_emailController.text.trim(), _passwordController.text.trim());
+                              if (ref.read(authControllerProvider).user != null) {
+                                // ignore: use_build_context_synchronously
+                                context.go('/dashboard');
+                              }
                             }
                           },
                         ),
+
                       const SizedBox(height: 16),
                       // Error message
                       if (authState.hasError)

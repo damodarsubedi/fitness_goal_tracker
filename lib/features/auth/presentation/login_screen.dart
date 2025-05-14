@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gym_goal_tracker/core/constants/colors.dart';
 import 'auth_controller.dart';
 import 'signup_screen.dart';
@@ -77,11 +78,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       else
                         CustomButton(
                           label: "Login",
-                          onPressed: () {
+                          onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              ref
+                              await ref
                                   .read(authControllerProvider.notifier)
                                   .login(_emailController.text.trim(), _passwordController.text.trim());
+
+                              if (!mounted) return;
+
+                              final user = ref.read(authControllerProvider).user;
+                              if (user != null) {
+                                // ignore: use_build_context_synchronously
+                                context.go('/dashboard');
+                              }
                             }
                           },
                         ),
@@ -114,14 +123,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.secondaryBlue,
                                 ),
-                                recognizer:
-                                    TapGestureRecognizer()
-                                      ..onTap = () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (_) => const SignupScreen()),
-                                        );
-                                      },
+                                recognizer: TapGestureRecognizer()..onTap = () => context.go('/signup'),
                               ),
                             ],
                           ),
